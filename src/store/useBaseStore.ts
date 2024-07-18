@@ -28,4 +28,3 @@ export const useBaseStore = create<BaseStoreState & BaseStoreActions>(
     removeUserId: () => set({ userId: null }),
   })
 );
-// Compare this snippet from src/store/useBaseStore.ts:
