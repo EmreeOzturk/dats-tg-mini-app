@@ -1,7 +1,7 @@
 "use client"
 import useTelegram from "@/hooks/useTelegram";
 export default function Home() {
-  const { userId, userName } = useTelegram();
+  const { userId, userName, telegram } = useTelegram();
 
 
   return (
@@ -9,6 +9,9 @@ export default function Home() {
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         {userId && <div>userId: {userId}</div>}
         {userName && <div>userName: {userName}</div>}
+        {
+          JSON.stringify(telegram)
+        }
       </div>
     </main>
   );
