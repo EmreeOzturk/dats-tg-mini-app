@@ -1,7 +1,6 @@
 "use client"
 import WebApp from "@twa-dev/sdk";
 import { useBaseStore } from "@/store/useBaseStore";
-
 const useTelegram = () => {
     const telegram = useBaseStore((state) => state.tg);
     const setTg = useBaseStore((state) => state.setTg);
@@ -10,7 +9,7 @@ const useTelegram = () => {
     const userName = useBaseStore((state) => state.userName);
 
     const initTelegram = () => {
-        if (typeof window !== 'undefined' && WebApp) {
+        if (typeof window !== 'undefined' && WebApp !== undefined && telegram === null) {
             console.log('Telegram WebApp is set');
             setTg(WebApp);
             WebApp.ready();
@@ -19,7 +18,7 @@ const useTelegram = () => {
         }
         else {
             console.log('Telegram WebApp is undefined, retrying…');
-            setTimeout(initTelegram, 500);
+            setTimeout(initTelegram, 400);
         }
     }
 
