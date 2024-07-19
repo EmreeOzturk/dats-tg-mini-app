@@ -5,14 +5,21 @@ export default function Home() {
 
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        {userId && <div>userId: {userId}</div>}
-        {userName && <div>userName: {userName}</div>}
-        {
-          JSON.stringify(telegram)
-        }
-      </div>
+    <main className="flex h-full overflow-x-hidden  flex-col items-center justify-between 
+    ">
+      {userId && <div>userId: {telegram?.initDataUnsafe.user?.id}</div>}
+      {userName && <div>userName: {telegram?.initDataUnsafe.user?.username}</div>}
+      {
+        JSON.stringify(telegram)
+      }
+
+      {/* <button
+        onClick={() => {
+          telegram?.close();
+        }}
+      >
+        Close
+      </button> */}
     </main>
   );
 }
