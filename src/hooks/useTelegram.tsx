@@ -10,14 +10,12 @@ const useTelegram = () => {
 
     const initTelegram = () => {
         if (typeof window !== 'undefined' && WebApp !== undefined && telegram === null) {
-            console.log('Telegram WebApp is set');
+            WebApp.ready()
+            WebApp.expand()
+            WebApp.enableClosingConfirmation()
             setTg(WebApp);
-            WebApp.ready();
-            WebApp.expand();
-            WebApp.enableClosingConfirmation();
         }
         else {
-            console.log('Telegram WebApp is undefined, retrying…');
             setTimeout(initTelegram, 400);
         }
     }
