@@ -3,9 +3,8 @@ import { PropsWithChildren, useEffect, useState } from "react"
 
 import useTelegram from "@/hooks/useTelegram";
 const TelegramWebAppProvider = ({ children }: PropsWithChildren<{}>) => {
-    const { removeTelegram, initTelegram } = useTelegram();
+    const { removeTelegram, initTelegram, telegram } = useTelegram();
     const [loading, setLoading] = useState(true);
-    console.log(loading)
     useEffect(() => {
         initTelegram();
         setLoading(false);
