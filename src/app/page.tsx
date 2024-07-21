@@ -1,25 +1,34 @@
 "use client"
-import useTelegram from "@/hooks/useTelegram";
+import { motion } from "framer-motion";
+import PulseButton from "@/components/ui/pulse-button";
+import Footer from "@/components/footer";
 export default function Home() {
-  const { userId, userName, telegram } = useTelegram();
-
 
   return (
-    <main className="flex h-full overflow-x-hidden  flex-col items-center justify-between 
-    ">
-      {userId && <div>userId: {telegram?.initDataUnsafe.user?.id}</div>}
-      {userName && <div>userName: {telegram?.initDataUnsafe.user?.username}</div>}
-      {
-        JSON.stringify(telegram)
-      }
+    <motion.div
+      initial={{ opacity: 0.0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        delay: 0.3,
+        duration: 0.8,
+        ease: "easeInOut",
+      }}
+      className="relative flex h-full pt-8 flex-col gap-4 items-center justify-start px-4"
+    >
+      <div className="text-4xl md:text-7xl mb-24 font-bold text-center">
+        <h2
+          className="drop-shadow-[0px 0px 8px #000]  shadow-black
+           stroke-black dark:stroke-white"
+        >
+          DATS PROJECT
+        </h2>
+        <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
+          Check your connection speed
+        </div>
+      </div>
 
-      {/* <button
-        onClick={() => {
-          telegram?.close();
-        }}
-      >
-        Close
-      </button> */}
-    </main>
+      <PulseButton />
+      <Footer />
+    </motion.div>
   );
 }
