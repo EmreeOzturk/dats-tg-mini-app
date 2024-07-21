@@ -1,12 +1,16 @@
 "use client"
 import WebApp from "@twa-dev/sdk";
 import { useBaseStore } from "@/store/useBaseStore";
+
 const useTelegram = () => {
-    const telegram = useBaseStore((state) => state.tg);
     const setTg = useBaseStore((state) => state.setTg);
     const removeTg = useBaseStore((state) => state.removeTg);
+
+    const telegram = useBaseStore((state) => state.tg);
     const userId = useBaseStore((state) => state.userId);
     const userName = useBaseStore((state) => state.userName);
+    const userPoints = useBaseStore((state) => state.userPoints);
+    const userTotalTimeOfUsingApp = useBaseStore((state) => state.userTotalTimeOfUsingApp);
 
     const initTelegram = () => {
         if (typeof window !== 'undefined' && WebApp !== undefined && telegram === null) {
@@ -29,7 +33,9 @@ const useTelegram = () => {
         removeTelegram,
         telegram,
         userId,
-        userName
+        userName,
+        userPoints,
+        userTotalTimeOfUsingApp,
     }
 }
 
