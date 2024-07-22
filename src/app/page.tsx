@@ -2,7 +2,9 @@
 import { motion } from "framer-motion";
 import PulseButton from "@/components/ui/pulse-button";
 import Footer from "@/components/footer";
+
 export default function Home() {
+
 
   return (
     <motion.div
