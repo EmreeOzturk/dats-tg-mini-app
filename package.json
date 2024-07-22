@@ -19,6 +19,7 @@
     "dotenv": "^16.4.5",
     "framer-motion": "^11.3.7",
     "grammy": "^1.27.0",
+    "network-speed": "^2.1.1",
     "next": "14.2.5",
     "react": "0.0.0-experimental-163365a0-20240717",
     "react-dom": "0.0.0-experimental-163365a0-20240717",

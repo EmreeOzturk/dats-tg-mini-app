@@ -35,6 +35,9 @@ importers:
       grammy:
         specifier: ^1.27.0
         version: 1.27.0
+      network-speed:
+        specifier: ^2.1.1
+        version: 2.1.1
       next:
         specifier: 14.2.5
         version: 14.2.5(react-dom@0.0.0-experimental-163365a0-20240717(react@0.0.0-experimental-163365a0-20240717))(react@0.0.0-experimental-163365a0-20240717)
@@ -1151,6 +1154,9 @@ packages:
 
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
+
+  network-speed@2.1.1:
+    resolution: {integrity: sha512-NDr8h55toVE5Gy/CZI5nUAl+57DX1xl3PyhcXWacUiUttOJ2JsKkm5JzyVaoJ5psR9KUhi9y4EKc+atnWarkOg==}
 
   next@14.2.5:
     resolution: {integrity: sha512-0f8aRfBVL+mpzfBjYfQuLWh2WyAwtJXCRfkPF4UJ5qd2YwrHczsrSzXU4tRMV0OAxR8ZJZWPFn6uhSC56UTsLA==}
@@ -2947,6 +2953,8 @@ snapshots:
   nanoid@3.3.7: {}
 
   natural-compare@1.4.0: {}
+
+  network-speed@2.1.1: {}
 
   next@14.2.5(react-dom@0.0.0-experimental-163365a0-20240717(react@0.0.0-experimental-163365a0-20240717))(react@0.0.0-experimental-163365a0-20240717):
     dependencies:
