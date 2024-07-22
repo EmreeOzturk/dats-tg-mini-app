@@ -3,7 +3,7 @@ import { Orbitron } from "next/font/google";
 import "./globals.css";
 const orbitron = Orbitron({ subsets: ["latin"] });
 import TelegramWebAppProvider from "@/providers/telegram-webapp-provider";
-import ReactQueryProvider from "@/providers/react-query-provider";
+import { ReactQueryClientProvider } from "@/providers/react-query-provider";
 import Header from "@/components/header";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 export const metadata: Metadata = {
@@ -18,19 +18,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${orbitron.className} antialiased overflow-hidden`}>
-        <ReactQueryProvider>
+    <ReactQueryClientProvider>
+      <html lang="en">
+        <body className={`${orbitron.className} antialiased overflow-hidden`}>
           <TelegramWebAppProvider>
             <AuroraBackground >
-            <main className="min-h-screen overflow-hidden flex flex-col justify-between ">
-              <Header />
-              {children}
-            </main>
+              <main className="min-h-screen overflow-hidden flex flex-col justify-between ">
+                <Header />
+                {children}
+              </main>
             </AuroraBackground >
           </TelegramWebAppProvider>
-        </ReactQueryProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ReactQueryClientProvider>
   );
 }
