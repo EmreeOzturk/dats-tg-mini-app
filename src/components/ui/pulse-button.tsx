@@ -1,12 +1,38 @@
 "use client"
 import { motion } from "framer-motion";
-
-
+import { useMutation } from "@tanstack/react-query";
+import useConnectionDataStore from "@/store/useConnectionDataStore";
+import { useEffect } from "react";
+import type { ConnectionResponseData } from "@/types";
 const LOOP_DURATION = 4;
 
 const PulseButton = () => {
+    const setDownloadSpeed = useConnectionDataStore((state) => state.setDownloadSpeed);
+    const setUploadSpeed = useConnectionDataStore((state) => state.setUploadSpeed);
+    const setUserLocation = useConnectionDataStore((state) => state.setUserLocation);
+    const setUserIp = useConnectionDataStore((state) => state.setUserIp);
+    const { data, isPending, isError, mutate } = useMutation({
+        mutationFn: () => {
+            return fetch("/api/speedTest", {
+                method: "POST",
+            })
+        },
+    })
+
+    useEffect(() => {
+        if (data) {
+            // setDownloadSpeed(data.downloadSpeed);
+            // setUploadSpeed(data.uploadSpeed);
+            // setUserLocation(data.userLocation);
+            // setUserIp(data.userIp);
+            console.log(data)
+        }
+    }, [data, isPending]);
     return (
         <motion.div
+            onClick={() => {
+                mutate();
+            }}
             initial={{
                 scale: 0.5,
             }}
