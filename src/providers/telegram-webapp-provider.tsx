@@ -5,10 +5,12 @@ import { useBaseStore } from "@/store/useBaseStore";
 
 import useTelegram from "@/hooks/useTelegram";
 import WebApp from "@twa-dev/sdk";
+import LoadingPage from "@/components/loading";
 const TelegramWebAppProvider = ({ children }: PropsWithChildren<{}>) => {
     const { removeTelegram, initTelegram } = useTelegram();
     const setUserPoints = useBaseStore((state) => state.setUserPoints);
     const setUserTotalTimeOfUsingApp = useBaseStore((state) => state.setUserTotalTimeOfUsingApp);
+    const setUserLastCheckInDate = useBaseStore((state) => state.setUserLastCheckInDate);
     useEffect(() => {
         initTelegram();
         return () => {
@@ -27,6 +29,7 @@ const TelegramWebAppProvider = ({ children }: PropsWithChildren<{}>) => {
         }).then((res) => res.json()).then((data) => {
             setUserPoints(data.points);
             setUserTotalTimeOfUsingApp(data.totalTimeOfUsingApp);
+            setUserLastCheckInDate(new Date(data.lastCheckIn));
         }),
         queryKey: ["handleAndValidateUser"],
     });
@@ -35,7 +38,7 @@ const TelegramWebAppProvider = ({ children }: PropsWithChildren<{}>) => {
     return (
         <>
             {
-                isLoading ? <div>Loading... </div> : children
+                isLoading ? <LoadingPage /> : children
             }
         </>
     )
