@@ -17,7 +17,7 @@ export const AuroraBackground = ({
         <main>
             <div
                 className={cn(
-                    "relative flex flex-col  h-[100vh] items-center justify-center bg-zinc-600  text-slate-950 transition-bg",
+                    "relative flex flex-col  h-[100vh] items-center justify-center bg-[#00005060]  text-white transition-bg",
                     className
                 )}
                 {...props}
@@ -26,12 +26,12 @@ export const AuroraBackground = ({
                     <div
                         className={cn(
                             `            
-            [--white-gradient:repeating-linear-gradient(100deg,var(--blue-600)_2%,var(--sky-500)_2%,var(--sky-700)_6%,var(--sky-400)_2%,var(--sky-700)_8%)]
-            [--aurora:repeating-linear-gradient(100deg,var(--blue-500)_5%,var(--indigo-300)_7%,var(--indigo-800)_6%,var(--violet-800)_8%,var(--blue-400)_6%)]
+            [--white-gradient:repeating-linear-gradient(100deg,var(--blue-900)_2%,var(--sky-900)_2%,var(--sky-700)_6%,var(--sky-400)_2%,var(--sky-700)_8%)]
+            [--aurora:repeating-linear-gradient(100deg,var(--blue-500)_5%,var(--indigo-900)_7%,var(--indigo-800)_6%,var(--violet-800)_8%,var(--blue-900)_6%)]
             [background-image:var(--white-gradient),var(--aurora)]
             [background-size:300%,_200%]
             [background-position:50%_50%,50%_50%]
-            blur-[6px] invert
+            blur-[6px] 
             after:content-[""] after:absolute after:inset-0 after:[background-image:var(--white-gradient),var(--aurora)] 
             after:dark:[background-image:var(--dark-gradient),var(--aurora)]
             after:[background-size:200%,_100%] 
