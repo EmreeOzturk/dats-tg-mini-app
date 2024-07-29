@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import useConnectionDataStore from "@/store/useConnectionDataStore";
 import { useEffect } from "react";
 import type { ConnectionResponseData } from "@/types";
+import { useBaseStore } from "@/store/useBaseStore";
 const LOOP_DURATION = 4;
 
 const PulseButton = () => {
@@ -11,46 +12,51 @@ const PulseButton = () => {
     const setUploadSpeed = useConnectionDataStore((state) => state.setUploadSpeed);
     const setUserLocation = useConnectionDataStore((state) => state.setUserLocation);
     const setUserIp = useConnectionDataStore((state) => state.setUserIp);
+    const telegramId = useBaseStore((state) => state.telegramId);
     const { data, isPending, isError, mutate } = useMutation({
-        mutationFn: () => {
+        mutationFn: async () => {
             return fetch("/api/speedTest", {
                 method: "POST",
-            })
+                body: JSON.stringify({ userTelegramId: telegramId }),
+            }).then((res) => res.json()).then((data) => {
+                setDownloadSpeed(data.downloadSpeed);
+                setUploadSpeed(data.uploadSpeed);
+                setUserLocation(data.userLocation);
+                setUserIp(data.userIp);
+            });
         },
     })
 
-    useEffect(() => {
-        if (data) {
-            // setDownloadSpeed(data.downloadSpeed);
-            // setUploadSpeed(data.uploadSpeed);
-            // setUserLocation(data.userLocation);
-            // setUserIp(data.userIp);
-            console.log(data)
-        }
-    }, [data, isPending]);
+    // useEffect(() => {
+    //     if (data?.ok) {
+    //         data.json().then((data: ConnectionResponseData) => {
+    //             setDownloadSpeed(data.downloadSpeed);
+    //             setUploadSpeed(data.uploadSpeed);
+    //             setUserLocation(data.userLocation);
+    //             setUserIp(data.userIp);
+    //         });
+    //     }
+    // }, [data]);
     return (
         <motion.div
             onClick={() => {
                 mutate();
             }}
             initial={{
-                scale: 0.5,
+                scale: 0.4,
             }}
             animate={{
-                scale: 1.2,
+                scale: 1.1,
             }}
-            // whileHover={
-            //     {
-            //         scale: 1.1,
-            //     }
-            // }
             whileTap={
                 {
                     scale: 0.9,
                 }
             }
-            className="relative cursor-pointer mb-32">
-            <Logo />
+            className="relative cursor-pointer mb-24">
+            <div className={`${isPending && 'animate-spin'}`}>
+                <Logo />
+            </div>
             <Band delay={0} />
             <Band delay={LOOP_DURATION * 0.25} />
             <Band delay={LOOP_DURATION * 0.5} />
@@ -62,12 +68,12 @@ const PulseButton = () => {
 const Logo = () => {
     return (
         <motion.svg
-            width="70"
-            height="55"
+            width="50"
+            height="35"
             viewBox="0 0 16 16"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="relative z-10 fill-violet-100"
+            className="relative z-10 fill-violet-100 "
             initial={{
                 opacity: 0,
                 scale: 0.85,
@@ -109,7 +115,7 @@ const Band = ({ delay }: { delay: number }) => {
                 ease: "linear",
                 delay,
             }}
-            className="absolute left-[50%] top-[50%] z-0 h-56 w-56 rounded-full border-[1px] border-sky-500 bg-gradient-to-br from-sky-500/50 to-sky-800/30 shadow-2xl shadow-sky-500/40"
+            className="absolute left-[50%] top-[50%] z-0 h-44 w-44 rounded-full border-[1px] border-sky-500 bg-gradient-to-br from-sky-500/50 to-sky-800/30 shadow-2xl shadow-sky-500/40"
         />
     );
 };
