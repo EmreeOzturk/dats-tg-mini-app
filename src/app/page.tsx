@@ -19,7 +19,7 @@ export default function Home() {
         ease: "easeInOut",
       }}
       className="relative h-[70dvh]  flex  pt-3 flex-col gap-4 items-center justify-between pb-12 px-4" >
-      <div className="text-4xl  mb-12 font-bold text-center">
+      <div className="text-4xl  font-bold text-center">
         <h2 className="drop-shadow-[0px 0px 8px #000] tracking-wider  shadow-black  stroke-black dark:stroke-white" >
           DATS PROJECT
         </h2>
@@ -27,14 +27,16 @@ export default function Home() {
           Check your connection speed
         </div>
       </div>
-      <PulseButton />
+      <div className="flex items-center justify-center ">
+        <PulseButton />
+      </div>
       {downloadSpeed !== 0 &&
         <div className="flex items-center text-sm justify-between gap-3" >
           <p className="text-white font-bold">Download Speed: <span className="text-sky-400">{downloadSpeed}</span></p>
           <p className="text-white font-bold">Upload Speed: <span className="text-sky-400">{uploadSpeed}</span></p>
         </div>
       }
-      <div className="flex flex-col items-center justify-center gap-2">
+      <div className="flex flex-col mt-4 items-center justify-center gap-2">
         <p className="font-bold text-xl text-white">Total Shared Time</p>
         <Timer />
       </div>

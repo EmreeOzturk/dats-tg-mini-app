@@ -6,7 +6,7 @@ const Header = () => {
     const userName = useBaseStore((state) => state.userName);
     const userPoints = useBaseStore((state) => state.userPoints);
     return (
-        <header className='flex w-[96dvw] overflow-hidden items-center justify-between py-4 border-b px-4 rounded-2xl mt-2'>
+        <header className='flex w-[96dvw] overflow-hidden items-center justify-between py-1 border-b px-4 rounded-2xl mt-2'>
             <div className='flex items-center justify-between gap-2 w-full  text-sm font-bold'>
                 <div>
                     <p className="font-bold text-base">

@@ -20,5 +20,8 @@ export function verifyInitData(telegramInitData: string): boolean {
     .update(dataCheckString)
     .digest("hex");
 
+  console.log(calculatedHash, hash);
+  console.log(calculatedHash === hash);
+
   return calculatedHash === hash;
 }

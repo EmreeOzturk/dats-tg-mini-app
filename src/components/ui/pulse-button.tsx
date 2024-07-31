@@ -53,7 +53,7 @@ const PulseButton = () => {
                     scale: 0.9,
                 }
             }
-            className="relative cursor-pointer mb-24">
+            className="relative cursor-pointer py-4">
             <div className={`${isPending && 'animate-spin'}`}>
                 <Logo />
             </div>
