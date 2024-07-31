@@ -1,6 +1,8 @@
 "use client"
 import { IconType } from "react-icons";
+import Link from "next/link";
 import Icon from "./icon"
+import { Loader } from "lucide-react"
 import {
     Drawer,
     DrawerClose,
@@ -20,8 +22,8 @@ type CardProps = {
     icon?: IconType;
     isCompleted?: boolean;
     index?: number;
-    action: any;
-    success?: boolean;
+    action?: any;
+    isPending?: boolean;
 }
 
 const TaskCard: React.FC<CardProps> = ({
@@ -32,8 +34,36 @@ const TaskCard: React.FC<CardProps> = ({
     isCompleted,
     index,
     action,
-    success
+    isPending
 }) => {
+
+    const renderButtonOrLink = () => {
+        if (title === 'Follow us on Twitter') {
+            return <Link
+                target="_blank"
+                onClick={() => {
+                    action()
+                }}
+                className={`w-full py-2 rounded-lg ${isCompleted ? 'bg-emerald-500' : 'bg-sky-500'}`}
+                href="https://twitter.com/intent/follow?screen_name=datsproject" >
+                {isPending ? <div className="w-full flex items-center justify-center"><Loader className="animate-spin" /></div> : isCompleted ? <div
+                    className="w-full flex items-center justify-center "
+                >Completed</div> : <div
+                    className="w-full flex items-center justify-center">
+                    Claim Reward</div>}
+            </Link>
+        } else {
+            return <button
+                onClick={() => {
+                    action()
+                }}
+                className="w-full bg-sky-500 py-2 rounded-lg disabled:bg-emerald-500"
+                disabled={isCompleted}
+            >
+                {isPending ? <div className="w-full flex items-center justify-center"><Loader className="animate-spin" /></div> : isCompleted ? 'Completed' : 'Claim Reward'}
+            </button>
+        }
+    }
 
     return (
         <Drawer >
@@ -77,15 +107,7 @@ const TaskCard: React.FC<CardProps> = ({
                     </DrawerDescription>
                 </DrawerHeader>
                 <DrawerFooter>
-                    <button
-                        onClick={action}
-                        className="w-full bg-sky-500 py-2 rounded-lg disabled:bg-emerald-500"
-                        disabled={isCompleted}
-                    >
-                        {
-                            isCompleted ? 'Completed' : 'Claim Reward'
-                        }
-                    </button>
+                    {renderButtonOrLink()}
                 </DrawerFooter>
             </DrawerContent>
         </Drawer>
