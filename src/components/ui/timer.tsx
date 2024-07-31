@@ -11,7 +11,9 @@ type Units = "Day" | "Hour" | "Minute" | "Second";
 
 const Timer = () => {
     return (
-        <div className="mx-auto flex w-fit max-w-5xl flex-wrap items-center bg-black text-zinc-50 px-4 justify-center gap-x-4 text-xs md:text-sm">
+        <div className="mx-auto flex w-fit max-w-5xl flex-wrap items-center text-zinc-50 px-4 justify-center gap-x-4 text-xs md:text-sm
+            bg-gradient-to-r from-sky-950/30 via-sky-600/50 to-sky-950/30 rounded-full border border-sky-950 
+        ">
             <CountdownItem unit="Day" text="days" />
             <CountdownItem unit="Hour" text="hours" />
             <CountdownItem unit="Minute" text="minutes" />
