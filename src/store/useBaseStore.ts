@@ -9,6 +9,7 @@ type BaseStoreState = {
   userPoints: number | null;
   userTotalTimeOfUsingApp: number | null;
   userLastCheckInDate: Date | null;
+  isFollowingTwitter: boolean;
 };
 
 type BaseStoreActions = {
@@ -20,6 +21,7 @@ type BaseStoreActions = {
   removeUserId: () => void;
   setUserLastCheckInDate: (date: Date) => void;
   incrementUserPoints: (points: number) => void;
+  setIsFollowingTwitter: (isFollowing: boolean) => void;
 };
 
 export const useBaseStore = create<BaseStoreState & BaseStoreActions>(
@@ -31,6 +33,7 @@ export const useBaseStore = create<BaseStoreState & BaseStoreActions>(
     userPoints: null,
     userTotalTimeOfUsingApp: null,
     userLastCheckInDate: null,
+    isFollowingTwitter: false,
     setTg: (tg: typeof WebApp) =>
       set(() => ({
         tg: tg,
@@ -47,5 +50,7 @@ export const useBaseStore = create<BaseStoreState & BaseStoreActions>(
     setUserTotalTimeOfUsingApp: (totalTime: number) =>
       set({ userTotalTimeOfUsingApp: totalTime }),
     setUserLastCheckInDate: (date: Date) => set({ userLastCheckInDate: date }),
+    setIsFollowingTwitter: (isFollowing: boolean) =>
+      set({ isFollowingTwitter: isFollowing }),
   })
 );
