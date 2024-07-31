@@ -3,16 +3,28 @@ import TaskCard from "./task-card"
 import { FaTelegram, FaYoutube, FaTwitter, FaDiscord, FaLinkedin, FaCheck } from "react-icons/fa";
 import useTelegram from "@/hooks/useTelegram";
 import useCheckDaily from "@/hooks/useCheckDaily";
-
+import useCheckTwitterFollowing from "@/hooks/useCheckTwitterFollowing";
 const TaskList = () => {
     const { telegramId } = useTelegram();
-    const { checkIsCompleted, handleCheckIn, success } = useCheckDaily(telegramId as number);
-    const isCompleted = checkIsCompleted()
+    const { isCheckedInToday, mutate: handleCheckIn, isPending: dailyCheckPending } = useCheckDaily(telegramId as number);
+    const { isFollowingTwitter, mutate: handleFollowTwitter, isPending: isFollowingTwitterPending } = useCheckTwitterFollowing(telegramId as number);
 
 
     return (
-        <div className="flex flex-col z-10 items-center justify-start py-4 gap-3 mt-4  max-h-[340px] overflow-y-auto w-full">
-            {/* <TaskCard
+        <div className="flex flex-col z-10 items-center justify-start py-4 gap-3 mt-4  h-[70dvh] rounded-lg overflow-y-auto w-full ">
+            <h2>Daily tasks</h2>
+            <TaskCard
+                title="Daily Check-in"
+                description="Check-in daily and earn 5 XP"
+                reward={5}
+                icon={FaCheck}
+                index={1}
+                action={handleCheckIn}
+                isCompleted={isCheckedInToday}
+                isPending={dailyCheckPending}
+            />
+            <h2>One-time tasks</h2>
+            <TaskCard
                 title="Join Telegram"
                 description="Join our telegram channel and earn 10 XP"
                 reward={10}
@@ -31,8 +43,10 @@ const TaskList = () => {
                 description="Follow us on Twitter and earn 15 XP"
                 reward={15}
                 icon={FaTwitter}
-                isCompleted={true}
                 index={3}
+                action={handleFollowTwitter}
+                isCompleted={isFollowingTwitter}
+                isPending={isFollowingTwitterPending}
             />
             <TaskCard
                 title="Join Discord"
@@ -47,17 +61,8 @@ const TaskList = () => {
                 reward={15}
                 icon={FaLinkedin}
                 index={5}
-            /> */}
-            <TaskCard
-                title="Daily Check-in"
-                description="Check-in daily and earn 5 XP"
-                reward={5}
-                icon={FaCheck}
-                index={6}
-                action={handleCheckIn}
-                isCompleted={isCompleted}
-                success={success}
             />
+
         </div>
     )
 }
