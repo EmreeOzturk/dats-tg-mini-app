@@ -7,10 +7,6 @@ const useTelegram = () => {
     const removeTg = useBaseStore((state) => state.removeTg);
     const router = useRouter();
     const telegram = useBaseStore((state) => state.tg);
-    const userName = useBaseStore((state) => state.userName);
-    const userPoints = useBaseStore((state) => state.userPoints);
-    const userLastCheckInDate = useBaseStore((state) => state.userLastCheckInDate);
-    const userTotalTimeOfUsingApp = useBaseStore((state) => state.userTotalTimeOfUsingApp);
     const telegramId = useBaseStore((state) => state.telegramId);
     const setTelegramId = useBaseStore((state) => state.setTelegramId);
     const initTelegram = () => {
@@ -38,10 +34,6 @@ const useTelegram = () => {
         initTelegram,
         removeTelegram,
         telegram,
-        userName,
-        userPoints,
-        userTotalTimeOfUsingApp,
-        userLastCheckInDate,
         telegramId
     }
 }
