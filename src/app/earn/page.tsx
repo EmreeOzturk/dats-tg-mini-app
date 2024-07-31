@@ -4,7 +4,7 @@ import TaskList from "@/components/earn/task-list"
 const EarnPage = () => {
   return (
     <div className="h-full  flex flex-col items-center justify-start w-full px-8">
-      <EarnInfoSection />
+      {/* <EarnInfoSection /> */}
       <TaskList />
     </div>
   )
