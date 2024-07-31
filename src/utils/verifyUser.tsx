@@ -11,9 +11,10 @@ export function verifyInitData(telegramInitData: string): boolean {
   dataCheckString = dataCheckString.slice(0, -1);
 
 
+  console.log(process.env.TELEGRAM_TOKEN);
   const secret = crypto
     ?.createHmac("sha256", "WebAppData")
-    ?.update("7312114197:AAF4oFkxi_hhbOStMot3XQ5T21aVIMf2hE4");
+    ?.update(process.env.TELEGRAM_TOKEN!);
 
   const calculatedHash = crypto
     .createHmac("sha256", secret.digest())
