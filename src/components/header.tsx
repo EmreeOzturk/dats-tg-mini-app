@@ -1,6 +1,5 @@
 "use client"
 import Image from "next/image";
-import useTelegram from "@/hooks/useTelegram"
 import { useBaseStore } from "@/store/useBaseStore";
 const Header = () => {
     const userName = useBaseStore((state) => state.userName);
