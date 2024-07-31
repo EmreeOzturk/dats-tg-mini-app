@@ -11,6 +11,7 @@ const TelegramWebAppProvider = ({ children }: PropsWithChildren<{}>) => {
     const setUserPoints = useBaseStore((state) => state.setUserPoints);
     const setUserTotalTimeOfUsingApp = useBaseStore((state) => state.setUserTotalTimeOfUsingApp);
     const setUserLastCheckInDate = useBaseStore((state) => state.setUserLastCheckInDate);
+    const setIsFollowingTwitter = useBaseStore((state) => state.setIsFollowingTwitter);
     useEffect(() => {
         initTelegram();
         return () => {
@@ -18,6 +19,7 @@ const TelegramWebAppProvider = ({ children }: PropsWithChildren<{}>) => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
 
     const { data, isLoading } = useQuery({
         queryFn: async () => await fetch("/api/validateUser", {
@@ -30,6 +32,7 @@ const TelegramWebAppProvider = ({ children }: PropsWithChildren<{}>) => {
             setUserPoints(data.points);
             setUserTotalTimeOfUsingApp(data.totalTimeOfUsingApp);
             setUserLastCheckInDate(new Date(data.lastCheckIn));
+            setIsFollowingTwitter(data.isFollowingTwitter);
         }),
         queryKey: ["handleAndValidateUser"],
     });
