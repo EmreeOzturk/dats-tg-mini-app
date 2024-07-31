@@ -1,25 +1,29 @@
 import { dailyCheckIn } from "@/actions/mission-actions";
 import { useBaseStore } from "@/store/useBaseStore";
-import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
 const useCheckDaily = (telegramId: number) => {
     const lastCheckIn = useBaseStore((state) => state.userLastCheckInDate);
     const setLastCheckIn = useBaseStore((state) => state.setUserLastCheckInDate);
     const incrementUserPoints = useBaseStore((state) => state.incrementUserPoints);
-    const [success, setSuccess] = useState(false);
 
-    const handleCheckIn = async () => {
-        dailyCheckIn({ telegramId: telegramId }).then((res) => {
-            if (res.success) {
-                setLastCheckIn(new Date());
-                incrementUserPoints(5);
-                setSuccess(true);
-            } else {
-                window.alert(res.message);
+    const { isPending, mutate } = useMutation(
+        {
+            mutationFn: () => dailyCheckIn({ telegramId: telegramId }),
+            mutationKey: ["dailyCheckIn"],
+            onSuccess: (data) => {
+                console.log(data)
+                if (data.success) {
+                    setLastCheckIn(new Date());
+                    incrementUserPoints(5);
+                } else {
+                    window.alert(data.message);
+                }
+            },
+            onError: (err) => {
+                console.error(err);
             }
-        }).catch((err) => {
-            console.error(err);
-        })
-    }
+        }
+    )
 
     const checkIsCompleted = () => {
         if (lastCheckIn && new Date(lastCheckIn).toDateString() === new Date().toDateString()) {
@@ -28,11 +32,12 @@ const useCheckDaily = (telegramId: number) => {
         return false
     }
 
+    const isCheckedInToday = checkIsCompleted();
 
     return {
-        handleCheckIn,
-        checkIsCompleted,
-        success
+        isCheckedInToday,
+        mutate,
+        isPending
     }
 }
 
