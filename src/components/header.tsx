@@ -1,18 +1,22 @@
 "use client"
+import Image from "next/image";
 import useTelegram from "@/hooks/useTelegram"
 import { useBaseStore } from "@/store/useBaseStore";
 const Header = () => {
     const userName = useBaseStore((state) => state.userName);
     const userPoints = useBaseStore((state) => state.userPoints);
     return (
-        <header className='flex w-full overflow-hidden items-center justify-between pt-4 pb-4 '>
-            <div className='border flex items-center justify-center gap-2  text-sm font-bold border-black px-6 py-2'>
-                <p>
-                    {userName}
-                </p>
-                <p>
-                    XP: {userPoints}
-                </p>
+        <header className='flex w-[96dvw] overflow-hidden items-center justify-between py-4 border-b px-4 rounded-2xl mt-2'>
+            <div className='flex items-center justify-between gap-2 w-full  text-sm font-bold'>
+                <div>
+                    <p className="font-bold text-base">
+                        {userName}
+                    </p>
+                    <p className="font-bold text-base">
+                        XP: {userPoints}
+                    </p>
+                </div>
+                <Image priority src="/mavi3.png" alt="dats project logo" width={40} height={40} className="object-cover" />
             </div>
             {/* <button className="bg-black border z-10 tracking-wide border-black text-sm  w-fit text-white px-5 py-2">
                 Close App
