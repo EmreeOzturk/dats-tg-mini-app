@@ -3,15 +3,12 @@ import { motion } from "framer-motion";
 import PulseButton from "@/components/ui/pulse-button";
 import Timer from "@/components/ui/timer";
 import useConnectionDataStore from "@/store/useConnectionDataStore";
-import { useCountdownStore } from "@/store/useCountdownStore";
+import SharingButtons from "@/components/home/sharing-buttons";
 
 export default function Home() {
 
   const downloadSpeed = useConnectionDataStore((state) => state.downloadSpeed);
   const uploadSpeed = useConnectionDataStore((state) => state.uploadSpeed);
-  const start = useCountdownStore((state) => state.start);
-  const stop = useCountdownStore((state) => state.stop);
-  const isRunning = useCountdownStore((state) => state.isRunning);
   return (
     <motion.div
       initial={{ opacity: 0.0, y: 40 }}
@@ -21,7 +18,7 @@ export default function Home() {
         duration: 0.8,
         ease: "easeInOut",
       }}
-      className="relative max-h-screen  flex h-full pt-8 flex-col gap-4 items-center justify-between pb-12 px-4" >
+      className="relative h-[70dvh]  flex  pt-3 flex-col gap-4 items-center justify-between pb-12 px-4" >
       <div className="text-4xl  mb-12 font-bold text-center">
         <h2 className="drop-shadow-[0px 0px 8px #000] tracking-wider  shadow-black  stroke-black dark:stroke-white" >
           DATS PROJECT
@@ -41,11 +38,7 @@ export default function Home() {
         <p className="font-bold text-xl text-white">Total Shared Time</p>
         <Timer />
       </div>
-      <p className="text-4xl text-white"> {isRunning}</p>
-      <div className="flex items-center justify-center gap-4">
-        <button onClick={stop} className="px-4 py-2 z-20  font-bold">Stop Sharing</button>
-        <button onClick={start} className="px-4 py-2 z-20 bg-black text-white active:bg-fuchsia-600 font-bold">Start Sharing</button>
-      </div>
+      <SharingButtons />
     </motion.div>
   );
 }
