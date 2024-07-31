@@ -23,11 +23,13 @@ export default function RootLayout({
         <body className={`${orbitron.className} antialiased overflow-hidden`}>
           <TelegramWebAppProvider>
             {/* <AuroraBackground > */}
-              <main className="min-h-screen overflow-hidden flex flex-col justify-around items-center w-full">
-                <Header />
+            <main className="min-h-screen overflow-hidden flex flex-col justify-between items-center w-full">
+              <Header />
+              <section className="h-full">
                 {children}
-                <Footer />
-              </main>
+              </section>
+              <Footer />
+            </main>
             {/* </AuroraBackground > */}
           </TelegramWebAppProvider>
         </body>
