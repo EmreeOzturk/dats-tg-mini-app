@@ -52,7 +52,18 @@ const useTimer = (unit: Units) => {
 
     const timeRef = useRef(0);
 
-    const [time, setTime] = useState(0);
+    const [time, setTime] = useState(
+        Math.floor(
+            (accumulatedTime + (isRunning ? Date.now() - startTime : 0)) /
+            (unit === "Day"
+                ? DAY
+                : unit === "Hour"
+                    ? HOUR
+                    : unit === "Minute"
+                        ? MINUTE
+                        : SECOND)
+        )
+    );
 
     useEffect(() => {
         if (isRunning) {
@@ -64,7 +75,7 @@ const useTimer = (unit: Units) => {
             intervalRef.current = null;
         }
 
-        return () => clearInterval(intervalRef.current || undefined);
+        // return () => clearInterval(intervalRef.current || undefined);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isRunning]);
