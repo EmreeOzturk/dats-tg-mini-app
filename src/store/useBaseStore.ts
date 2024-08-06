@@ -3,6 +3,7 @@ import { create } from "zustand";
 
 type BaseStoreState = {
   tg: typeof WebApp | null;
+  img: string | null;
   telegramId: number | null;
   userId: number | null;
   userName: string | null;
@@ -14,11 +15,10 @@ type BaseStoreState = {
 
 type BaseStoreActions = {
   setTg: (tg: typeof WebApp) => void;
+  setImg: (img: string) => void;
   setUserPoints: (points: number) => void;
   setTelegramId: (id: number) => void;
   setUserTotalTimeOfUsingApp: (totalTime: number) => void;
-  removeTg: () => void;
-  removeUserId: () => void;
   setUserLastCheckInDate: (date: Date) => void;
   incrementUserPoints: (points: number) => void;
   setIsFollowingTwitter: (isFollowing: boolean) => void;
@@ -34,14 +34,14 @@ export const useBaseStore = create<BaseStoreState & BaseStoreActions>(
     userTotalTimeOfUsingApp: null,
     userLastCheckInDate: null,
     isFollowingTwitter: false,
+    img: null,
     setTg: (tg: typeof WebApp) =>
       set(() => ({
         tg: tg,
         userId: tg.initDataUnsafe.user?.id,
         userName: tg.initDataUnsafe.user?.username,
+        telegramId: tg.initDataUnsafe.user?.id,
       })) as void,
-    removeTg: () => set({ tg: null }),
-    removeUserId: () => set({ userId: null }),
     setUserPoints: (points: number) => set({ userPoints: points }),
     incrementUserPoints: (points: number) => {
       set((state) => ({ userPoints: state.userPoints! + points }));
@@ -52,5 +52,6 @@ export const useBaseStore = create<BaseStoreState & BaseStoreActions>(
     setUserLastCheckInDate: (date: Date) => set({ userLastCheckInDate: date }),
     setIsFollowingTwitter: (isFollowing: boolean) =>
       set({ isFollowingTwitter: isFollowing }),
+    setImg: (img: string) => set({ img: img }),
   })
 );
