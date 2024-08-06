@@ -1,11 +1,11 @@
 "use client"
 import TaskCard from "./task-card"
 import { FaTelegram, FaYoutube, FaTwitter, FaDiscord, FaLinkedin, FaCheck } from "react-icons/fa";
-import useTelegram from "@/hooks/useTelegram";
 import useCheckDaily from "@/hooks/useCheckDaily";
 import useCheckTwitterFollowing from "@/hooks/useCheckTwitterFollowing";
+import { useBaseStore } from "@/store/useBaseStore";
 const TaskList = () => {
-    const { telegramId } = useTelegram();
+    const { telegramId } = useBaseStore();
     const { isCheckedInToday, mutate: handleCheckIn, isPending: dailyCheckPending } = useCheckDaily(telegramId as number);
     const { isFollowingTwitter, mutate: handleFollowTwitter, isPending: isFollowingTwitterPending } = useCheckTwitterFollowing(telegramId as number);
 
