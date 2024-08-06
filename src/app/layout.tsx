@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Orbitron } from "next/font/google";
 import "./globals.css";
 const orbitron = Orbitron({ subsets: ["latin"] });
@@ -20,18 +21,18 @@ export default function RootLayout({
   return (
     <ReactQueryClientProvider>
       <html lang="en">
-        <body className={`${orbitron.className} antialiased overflow-hidden`}>
-          <TelegramWebAppProvider>
-            {/* <AuroraBackground > */}
-            <main className="min-h-screen overflow-hidden flex flex-col justify-between items-center w-full">
-              <Header />
-              <section className="h-full">
-                {children}
-              </section>
-              <Footer />
-            </main>
-            {/* </AuroraBackground > */}
-          </TelegramWebAppProvider>
+        <body className={`${orbitron.className} antialiased select-none`}>
+          <Suspense fallback={<></>} >
+            <TelegramWebAppProvider>
+              <AuroraBackground >
+                <main className="h-screen overflow-hidden flex flex-col justify-between items-center w-full">
+                  <Header />
+                  {children}
+                  <Footer />
+                </main>
+              </AuroraBackground >
+            </TelegramWebAppProvider>
+          </Suspense>
         </body>
       </html>
     </ReactQueryClientProvider>
