@@ -12,7 +12,6 @@ type CountdownStoreActions = {
   setStartTime: (time: number) => void;
   setAccumulatedTime: (time: number) => void;
 };
-
 export const useCountdownStore = create<
   CountdownStoreState & CountdownStoreActions
 >((set) => ({
