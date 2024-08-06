@@ -2,8 +2,6 @@
 import { motion } from "framer-motion";
 import { useMutation } from "@tanstack/react-query";
 import useConnectionDataStore from "@/store/useConnectionDataStore";
-import { useEffect } from "react";
-import type { ConnectionResponseData } from "@/types";
 import { useBaseStore } from "@/store/useBaseStore";
 const LOOP_DURATION = 4;
 
@@ -26,17 +24,6 @@ const PulseButton = () => {
             });
         },
     })
-
-    // useEffect(() => {
-    //     if (data?.ok) {
-    //         data.json().then((data: ConnectionResponseData) => {
-    //             setDownloadSpeed(data.downloadSpeed);
-    //             setUploadSpeed(data.uploadSpeed);
-    //             setUserLocation(data.userLocation);
-    //             setUserIp(data.userIp);
-    //         });
-    //     }
-    // }, [data]);
     return (
         <motion.div
             onClick={() => {
@@ -53,7 +40,7 @@ const PulseButton = () => {
                     scale: 0.9,
                 }
             }
-            className="relative cursor-pointer py-4">
+            className="relative cursor-pointer ">
             <div className={`${isPending && 'animate-spin'}`}>
                 <Logo />
             </div>
@@ -115,7 +102,7 @@ const Band = ({ delay }: { delay: number }) => {
                 ease: "linear",
                 delay,
             }}
-            className="absolute left-[50%] top-[50%] z-0 h-44 w-44 rounded-full border-[1px] border-sky-500 bg-gradient-to-br from-sky-500/50 to-sky-800/30 shadow-2xl shadow-sky-500/40"
+            className="absolute left-[50%] top-[50%] z-0 h-40 w-40 rounded-full border-[1px] border-sky-500 bg-gradient-to-br from-sky-500/50 to-sky-800/30 shadow-2xl shadow-sky-500/40"
         />
     );
 };
