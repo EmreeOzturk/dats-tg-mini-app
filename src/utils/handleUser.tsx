@@ -17,8 +17,6 @@ async function handleUser(telegramInitData: string): Promise<User | undefined> {
     const lastName = userParams.last_name;
     const username = userParams.username;
 
-
-
     try {
         let user = await prisma.user.findUnique({
             where: { telegramId: telegramId },
