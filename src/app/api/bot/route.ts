@@ -2,7 +2,6 @@ export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 
 import { Bot, InlineKeyboard, webhookCallback } from "grammy";
-
 const token = process.env.TELEGRAM_TOKEN;
 const env = process.env.NODE_ENV;
 // https://api.telegram.org/bot<telegram_bot_token>/setWebhook?url=https://<your-deployment.vercel>.app/api/bot

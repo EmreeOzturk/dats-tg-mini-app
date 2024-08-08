@@ -38,6 +38,9 @@ importers:
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
+      fast-speedtest-api:
+        specifier: ^0.3.2
+        version: 0.3.2
       framer-motion:
         specifier: ^11.3.17
         version: 11.3.17(react-dom@0.0.0-experimental-163365a0-20240717(react@0.0.0-experimental-163365a0-20240717))(react@0.0.0-experimental-163365a0-20240717)
@@ -952,6 +955,11 @@ packages:
 
   fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
+
+  fast-speedtest-api@0.3.2:
+    resolution: {integrity: sha512-QEfo3wytVo3x/ds4grti1nJUGZhmgdX9OpQbkXc6levJamjUFenb1SdbiVYhrTx27pvOAHSJOAXMu62K0dIEDQ==}
+    engines: {node: '>=7.10.1'}
+    hasBin: true
 
   fastq@1.17.1:
     resolution: {integrity: sha512-sRVD3lWVIXWg6By68ZN7vho9a1pQcN/WBFaAAsDDFzlJjvoGx0P8z7V1t72grFJfJhu3YPZBuu25f7Kaw2jN1w==}
@@ -2972,6 +2980,8 @@ snapshots:
   fast-json-stable-stringify@2.1.0: {}
 
   fast-levenshtein@2.0.6: {}
+
+  fast-speedtest-api@0.3.2: {}
 
   fastq@1.17.1:
     dependencies:
