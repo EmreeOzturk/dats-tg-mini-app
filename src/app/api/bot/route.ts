@@ -6,7 +6,8 @@ import { Bot, InlineKeyboard, webhookCallback } from "grammy";
 const token = process.env.TELEGRAM_TOKEN;
 const env = process.env.NODE_ENV;
 // https://api.telegram.org/bot<telegram_bot_token>/setWebhook?url=https://<your-deployment.vercel>.app/api/bot
-// https://api.telegram.org/bot7312114197:AAF4oFkxi_hhbOStMot3XQ5T21aVIMf2hE4/setWebhook?url=https://unified-solely-lacewing.ngrok-free.app/api/bot
+// https://api.telegram.org/bot7312114197:AAHyp-93Tj-_b5777FWaEEXVlJo9jfdBVLY/setWebhook?url=https://capital-ghost-early.ngrok-free.app/api/bot
+// https://api.telegram.org/bot7413150047:AAF7W85ekODSxziQRVGEiJc9GUaj9MyP7ck/setWebhook?url=https://dats-tg-mini-appv001.vercel.app/api/bot
 if (!token)
   throw new Error("TELEGRAM_BOT_TOKEN environment variable not found.");
 
@@ -18,7 +19,6 @@ bot.command("start", async (ctx) => {
   const getPhoto = await bot.api.getFile(photoId).then((res) => res.file_path);
   const url = `https://api.telegram.org/file/bot${token}/${getPhoto}`;
 
-  await ctx.reply(`https://shining-mastiff-enhanced.ngrok-free.app?img=${url}`);
   await ctx.replyWithPhoto(
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQgpP3zC2IaYwfB4Zri4sbh6Q3V0O9yHym-Q&s",
     {
@@ -49,7 +49,7 @@ const inlineKeyboard = (url: string) =>
     `${
       env === "production"
         ? `https://dats-tg-mini-appv001.vercel.app?img=${url}`
-        : `https://shining-mastiff-enhanced.ngrok-free.app?img=${url}`
+        : `https://capital-ghost-early.ngrok-free.app?img=${url}`
     }`
   );
 
