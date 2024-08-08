@@ -20,8 +20,7 @@ const ScoreItem = ({ unit, text }: { unit: string; text: string }) => {
         <div className="flex w-fit items-center justify-center gap-1.5 py-2 ">
             <div className="relative w-full overflow-hidden text-center">
                 <span
-                    className="block font-mono text-sm font-semibold md:text-base"
-                >
+                    className="block font-mono text-sm font-semibold md:text-base">
                     {unit === "Score" && score.toFixed(3)}
                 </span>
             </div>
@@ -60,22 +59,6 @@ const useTimer = () => {
         const elapsed = accumulatedTime + (isRunning ? now - startTime : 0);
         const newScore = elapsed / SECOND;
         setScore(newScore);
-        // if (ref.current) {
-        //     // Exit animation
-        //     await animate(
-        //         ref.current,
-        //         { y: ["0%", "-50%"], opacity: [1, 0] },
-        //         { duration: 0.3 }
-        //     );
-
-
-        //     // Enter animation
-        //     await animate(
-        //         ref.current,
-        //         { y: ["50%", "0%"], opacity: [0, 1] },
-        //         { duration: 0.3 }
-        //     );
-        // }
     };
 
     return { score };
