@@ -9,7 +9,7 @@
     "lint": "next lint",
     "speed": "fast --upload --json",
     "ngrok": "ngrok http --domain=capital-ghost-early.ngrok-free.app 3000",
-    "postinstall": "pnpm add -g fast-cli && prisma generate"
+    "postinstall": "npm i -g fast-cli && prisma generate"
   },
   "dependencies": {
     "@prisma/client": "5.17.0",
