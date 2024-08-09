@@ -7,9 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "speed": "fast --upload --json",
     "ngrok": "ngrok http --domain=capital-ghost-early.ngrok-free.app 3000",
-    "postinstall": "npm i -g fast-cli && prisma generate"
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "5.17.0",
@@ -26,7 +25,6 @@
     "framer-motion": "^11.3.17",
     "grammy": "^1.27.0",
     "lucide-react": "^0.416.0",
-    "network-speed": "^2.1.1",
     "next": "14.2.5",
     "react": "0.0.0-experimental-163365a0-20240717",
     "react-dom": "0.0.0-experimental-163365a0-20240717",
