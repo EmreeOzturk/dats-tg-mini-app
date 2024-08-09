@@ -10,7 +10,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const { userTelegramId } = await req.json();
 
   try {
-    const command = `npm run speed`;
+    const command = `npx fast-cli --upload --json`;
     const { stdout, stderr } = await execPromise(command);
     if (stderr) {
       console.error(`exec error: ${stderr}`);
