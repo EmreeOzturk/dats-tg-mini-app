@@ -3,10 +3,7 @@ export const fetchCache = "force-no-store";
 
 import { Bot, InlineKeyboard, webhookCallback } from "grammy";
 const token = process.env.TELEGRAM_TOKEN;
-const env = process.env.NODE_ENV;
-// https://api.telegram.org/bot<telegram_bot_token>/setWebhook?url=https://<your-deployment.vercel>.app/api/bot
-// https://api.telegram.org/bot7312114197:AAHyp-93Tj-_b5777FWaEEXVlJo9jfdBVLY/setWebhook?url=https://capital-ghost-early.ngrok-free.app/api/bot
-// https://api.telegram.org/bot7413150047:AAF7W85ekODSxziQRVGEiJc9GUaj9MyP7ck/setWebhook?url=https://dats-tg-mini-appv001.vercel.app/api/bot
+
 if (!token)
   throw new Error("TELEGRAM_BOT_TOKEN environment variable not found.");
 
